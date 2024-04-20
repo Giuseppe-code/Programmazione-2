@@ -67,7 +67,7 @@ class Checkers{
     }
 
     bool move(int posX, int posY, bool move){
-            posX=dim1-posX+1;//TODO controllare perché la matrice è invertita nella stampa e non so se il calcolo è giust
+            posX=dim1-posX+1;//TODO controllare perché la matrice è invertita nella stampa e non so se il calcolo è giusto
             posY=dim2-posY+1;
             int newPosX=posX;
             int newPosY=posY+1;
