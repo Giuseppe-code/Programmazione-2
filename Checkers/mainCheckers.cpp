@@ -3,8 +3,8 @@
 //
 #include <iostream>
 #include "Box.h"
-#include "Box.h"
 #include "Pawn.h"
+#include "Checkers.h"
 
 
 using namespace std;
@@ -13,5 +13,6 @@ using namespace std;
 
 
 int main(){
-    cout<< "Finire domani";
+    cout<<"White: ▣; Black: ▢; Nothing: # " <<endl;
+    Checkers *checkers=new Checkers(8,8);
 }

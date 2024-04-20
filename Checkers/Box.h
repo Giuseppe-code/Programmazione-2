@@ -6,8 +6,21 @@
 #define PROGRAMMAZIONE_2_BOX_H
 
 
-class Box {
+#include "Pawn.h"
 
+class Box {
+    private:
+        Pawn *pawn;
+    public:
+        Box(Pawn *pawn){
+            this->pawn=pawn;
+        }
+        void setPawn(Pawn *pawn){
+            this->pawn=pawn;
+        }
+        Pawn * getPawn(){
+            return pawn;
+        }
 };
 
 

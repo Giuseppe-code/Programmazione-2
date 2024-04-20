@@ -6,6 +6,14 @@
 #define PROGRAMMAZIONE_2_PAWN_H
 
 class Pawn{
-
+    private:
+        int color;
+    public:
+        Pawn(int choose){
+            color =choose; //0 null, 1 black, 2 white
+        }
+        int getColor(){
+            return color;
+        }
 };
 #endif //PROGRAMMAZIONE_2_PAWN_H
