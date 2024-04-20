@@ -44,7 +44,7 @@ class Demand{
             }
         };
         bool guess(int index){
-            cout<<((index-1==correct) ? ("correct") : ("not correct")) <<endl;
+            //cout<<((index-1==correct) ? ("correct") : ("not correct")) <<endl;
             return index-1==correct;
         }
 };

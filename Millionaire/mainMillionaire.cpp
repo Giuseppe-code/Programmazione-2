@@ -28,12 +28,15 @@ Demand** demandCreate( ifstream *instream, int numberQuestions){
     return demand;
 }
 int main(){
-    ifstream *instream = openFile();
-    string buffer;
-    getline(*instream, buffer);
-    int numberQuestions = stoi(buffer);
+    int numberQuestions = 0;
     int answer=0;
     int countCorrectAnswer=0;
+    string buffer;
+
+    ifstream *instream = openFile();
+    getline(*instream, buffer);
+    numberQuestions = stoi(buffer);
+
     Demand **demand= demandCreate(instream, numberQuestions);
     instream->clear();
     instream->seekg(0);
@@ -45,8 +48,8 @@ int main(){
         if(demand[i]->guess(answer))
             countCorrectAnswer++;
     }
-    cout<<"hai indovinato"<<countCorrectAnswer<<" su "<<numberQuestions<<endl;
-    cout<<"totale "<< 100*countCorrectAnswer/numberQuestions<<"%"<<endl;
+    cout<<"You got "<<countCorrectAnswer<<" out of "<<numberQuestions<<" question right"<<endl;
+    cout<<"Total: "<< 100*countCorrectAnswer/numberQuestions<<"%"<<endl;
 
 
 
