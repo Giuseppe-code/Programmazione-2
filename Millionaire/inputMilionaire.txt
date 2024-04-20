@@ -4,67 +4,67 @@ Roma
 Sofia
 Budapest
 Bucarest
-2
+1
 
 Quale è l'organo più grande del corpo umano?
 Fegato
 Cuore
 Pelle
 Cervello
-3
+2
 
 Quale è l'elemento più abbondante nell'universo?
 Idrogeno
 Ossigeno
 Ferro
 Carbonio
-1
+0
 
 Qual è l'unità di misura della temperatura?
 Chilogrammo
 Metro
 Kelvin
 Ampere
-3
+2
 
 Chi è l'autore de "Il signore degli anelli"?
 J.K. Rowling
 George Orwell
 J.R.R. Tolkien
 Stephen King
-3
+2
 
 Qual è il pianeta più grande del sistema solare?
 Marte
 Venere
 Giove
 Saturno
-3
+2
 
 In quale paese si trova la Torre Eiffel?
 Italia
 Spagna
 Francia
 Germania
-3
+2
 
-Quale è il più grande mammifero terrestre?
-Elefante africano
+Quale è il più grande mammifero della terra?
+Balenottera azzurra
 Ippopotamo
 Rinoceronte
 Orso polare
-1
+0
 
-Quale è il colore primario?
+Quale è il Verde?
 Verde
 Rosso
 Blu
 Giallo
-3
+0
 
 Chi scrisse "Romeo e Giulietta"?
 William Shakespeare
 Dante Alighieri
 Miguel de Cervantes
 Victor Hugo
-1
+0

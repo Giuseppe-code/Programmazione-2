@@ -15,13 +15,13 @@ class Demand{
         string answers[4];
         int correct;
     public:
-        Demand(ifstream &input){
-            getline(input, text);
+        Demand(istream *input){
+            getline(*input, text);
             for(int i=0; i<4; i++){
-                getline(input, answers[i]);
+                getline(*input, answers[i]);
             }
             string buffer;
-            getline(input, buffer);
+            getline(*input, buffer);
             correct=stoi(buffer);
         }
         Demand(string answers[4], int correct){
@@ -44,7 +44,8 @@ class Demand{
             }
         };
         bool guess(int index){
-            return index==correct;
+            cout<<((index-1==correct) ? ("correct") : ("not correct")) <<endl;
+            return index-1==correct;
         }
 };
 
