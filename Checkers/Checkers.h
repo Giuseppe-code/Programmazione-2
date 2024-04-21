@@ -32,9 +32,9 @@ class Checkers{
             }
 
             box= new Box**[dim1];
-            for(int i=0; i<dim1; i++){
+            for(int i=dim1-1; i>=0; i--){
                 box[i]= new Box*[dim2];
-                for(int j=0; j<dim2; j++){
+                for(int j=dim2-1; j>=0; j--){
                     switch(initialize(i,j)){
                         case WHITE:
                             box[i][j]= new Box(whitePawn[countWhite]);
@@ -59,63 +59,78 @@ class Checkers{
             printCheckers();
         }
 
-    bool movePawn(int x, int y, int z) {
+    bool movePawn(int y, int x, int offsetX) {
         Box *newBox=box[y][x];
-        box[y][x]=box[y+1][x+z];
-        box[y+1][x+z]=newBox;
-        return false;
+        box[y][x]=box[y+1][x + offsetX];
+        box[y+1][x + offsetX]=newBox;
+        return true;
+    }
+
+    bool eatPawn(int posY, int posX, int direction) {
+            int newPosY=posY+2;
+            int newPosX=posX+ ((direction ==1 ) ? 2 : -2);
+            int enemiesPosX=posX+ ((direction ==1 ) ? 1 : -1);
+            if(checkExist(newPosY, newPosX)){
+                if(checkItem(newPosY, newPosX, NOTHING)){
+                    box[posY+1][enemiesPosX]->getPawn()->setDefeat();
+                    return movePawn(posY+1,posX,newPosX-posX);
+                }
+            }
+            return false;
     }
 
     bool move(int posX, int posY, bool move){
-            posX=dim1-posX+1;//TODO controllare perché la matrice è invertita nella stampa e non so se il calcolo è giusto
-            posY=dim2-posY+1;
+            posX=dim1-posX;//TODO controllare perché la matrice è invertita nella stampa e non so se il calcolo è giusto
+            posY--;
             int newPosX=posX;
             int newPosY=posY+1;
-            if(box[posX][posY]->getPawn()->getColor()!=round){
+            if(!checkItem(posY, posX,round)){
                 return false;
             }
-            if(move==1){//right
+
+            if(move==1){
                 newPosX++;
-                if(check(newPosY, newPosX))
-                    if(box[newPosY][newPosX]->getPawn()->getColor()==NOTHING){
-                        movePawn(posX, posY, 1);
-                        return true;
-                    }
-                    if(box[newPosY][newPosX]->getPawn()->getColor()==round) {//you can't eat your pawn
-                        return false;
-                    }else{
-                        eatPawn(posY, posX, 1);
-                        return true;
-                    }
-            }
-            if(move==0){//left
+            }else{
                 newPosX--;
-                if(check(newPosY, newPosX))
-                    if(box[newPosY][newPosX]->getPawn()->getColor()==NOTHING){
-                        movePawn(posX, posY, 0);
-                        return true;
-                    }
-                if(box[newPosY][newPosX]->getPawn()->getColor()==round) {//you can't eat your pawn
+            }
+
+            if(checkExist(newPosY, newPosX))
+                if(checkItem(newPosY, newPosX, NOTHING)){
+                    movePawn(posX, posY, move);
+                    return true;
+                }
+                if(checkItem(newPosY, newPosX, round)) {//you can't eat your pawn
                     return false;
                 }else{
-                    eatPawn(posX, posY, 0);
+                    if(checkExist(newPosY + 1, newPosX + 1)){
+                        if(checkItem(newPosY+1, newPosX+1, NOTHING)){
+                            return eatPawn(posY, posX, move);
+                        }
+                    }
                     return true;
                 }
             }
 
-
-
+        int checkExist(int newPosY, int newPosX){
+            return (0 <= newPosY && newPosY <= 8) && (0 <= newPosX && newPosX <= 8);
         }
-        int check(int newPosY, int newPosX){
-            return (0 <= newPosY && newPosY <= 8) && (0 <= newPosX && newPosX <= 8)
+        int checkItem(int y, int x, int color){
+            if(box[y][x]->getPawn()->getColor() != color){
+                cout<<"Bro hai sbagliato non è il tuo turno/ non puoi mangiare la tua casella";
+            }
+            return box[y][x]->getPawn()->getColor() == color;
+        }
+        int isEnd(){
+            return true;
         }
         int getRound(){
             return round;
         }
         void printCheckers(){
             cout<<"Stampa----- White: ▣; Black: ▢; Nothing: #;"<<endl;
-            for(int i=dim1-1; i>=0; i--){
-                for(int j=dim2-1; j>=0; j--){
+            for(int i=0; i<dim1; i++){
+                for(int j=0; j<dim2; j++){
+                    cout<<"y:"<<i;
                     switch(box[i][j]->getPawn()->getColor()){
                         case BLACK:
                             cout<<"▢";
@@ -126,13 +141,12 @@ class Checkers{
                         default:
                             cout<<"#";
                     }
-
+                    cout<<"x:"<<j;
                     cout<<" ";
                 }
                 cout<<""<<endl;
             }
         }
-
         int initialize(int i, int j){
             if(i==0 || i==2)
                 if(j%2==1)

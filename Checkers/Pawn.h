@@ -4,7 +4,7 @@
 
 #ifndef PROGRAMMAZIONE_2_PAWN_H
 #define PROGRAMMAZIONE_2_PAWN_H
-
+#include "Color.h"
 class Pawn{
     private:
         int color;
@@ -14,6 +14,9 @@ class Pawn{
         }
         int getColor(){
             return color;
+        }
+        int setDefeat(){
+            color=NOTHING;
         }
 };
 #endif //PROGRAMMAZIONE_2_PAWN_H
