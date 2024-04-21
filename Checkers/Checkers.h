@@ -35,6 +35,8 @@ class Checkers{
             for(int i=dim1-1; i>=0; i--){
                 box[i]= new Box*[dim2];
                 for(int j=dim2-1; j>=0; j--){
+                    cout<<"y:"<<i;
+
                     switch(initialize(i,j)){
                         case WHITE:
                             box[i][j]= new Box(whitePawn[countWhite]);
@@ -50,7 +52,7 @@ class Checkers{
                             box[i][j]= new Box(new Pawn(NOTHING));
                             cout<<"#";
                     }
-
+                    cout<<"x:"<<j;
                     cout<<" ";
                 }
                 cout<<""<<endl;
@@ -128,7 +130,7 @@ class Checkers{
         }
         void printCheckers(){
             cout<<"Stampa----- White: ▣; Black: ▢; Nothing: #;"<<endl;
-            for(int i=0; i<dim1; i++){
+            for(int i=dim1-1; i>=0; i--){
                 for(int j=0; j<dim2; j++){
                     cout<<"y:"<<i;
                     switch(box[i][j]->getPawn()->getColor()){
