@@ -17,6 +17,7 @@ class Pawn{
         }
         int setDefeat(){
             color=NOTHING;
+            return 0; //TODO Eseguire caso finale
         }
 };
 #endif //PROGRAMMAZIONE_2_PAWN_H

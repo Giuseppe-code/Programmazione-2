@@ -18,9 +18,9 @@ int main(){
     int y,x;
     bool direction;
     do{
-        cout<<((checkers->getRound()==0) ? "BLACK" : "WHITE" )<<" round "<< endl;
+        cout<<((checkers->getRound()==0) ? "BLACK" : "WHITE" )<<" round x, y, direction "<< endl;
         cin>>x>>y>>direction;
-        checkers->move(x, y, direction);
+        if(checkers->move(x, y, direction)){checkers->setRound();}
         checkers->printCheckers();
 
     }while(checkers->isEnd());
