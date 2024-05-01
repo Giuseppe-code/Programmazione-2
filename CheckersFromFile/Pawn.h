@@ -17,9 +17,8 @@ class Pawn{
         int getColor(){
             return color;
         }
-        int setDefeat(){
+        void setDefeat(){
             color=NOTHING;
-            return 0; //TODO Eseguire caso finale
         }
         void setPosX(int posX){
             this->posX=posX;

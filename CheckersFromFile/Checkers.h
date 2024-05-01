@@ -31,12 +31,10 @@ class Checkers{
                 blackPawn[i] =new Pawn(BLACK);
             }
 
-            //TODO inserire colore delle box, casella bianca o nera
             box= new Box**[dim1];
             for(int i=dim1-1; i>=0; i--){
                 box[i]= new Box*[dim2];
                 for(int j=dim2-1; j>=0; j--){
-
                     switch(initialize(i,j)){
                         case WHITE:
                             whitePawn[countWhite]->setPosY(i);
