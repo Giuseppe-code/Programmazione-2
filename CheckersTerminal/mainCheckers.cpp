@@ -36,6 +36,4 @@ int main(){
             cout<<"error in switch at the end"<<endl;
             break;
     }
-    if(winner==WHITE){
-    }
 }
